@@ -1,0 +1,106 @@
+--------------------------------------------------
+Algoritmo de Reemplazon RELOJ
+Tamaño de proceso: 6912
+Numero de paginas: 54
+--------------------------------------------------
+Numero de fallo: 0
+Pagina de fallo: 0
+-------------------------
+Numero de fallo: 1
+Pagina de fallo: 1
+-------------------------
+Numero de fallo: 2
+Pagina de fallo: 53
+-------------------------
+Numero de fallo: 3
+Pagina de fallo: 2
+-------------------------
+Numero de fallo: 4
+Pagina de fallo: 8
+-------------------------
+Numero de fallo: 5
+Pagina de fallo: 3
+-------------------------
+Numero de fallo: 6
+Pagina de fallo: 20
+-------------------------
+Numero de fallo: 7
+Pagina de fallo: 33
+-------------------------
+Numero de fallo: 8
+Pagina de fallo: 4
+-------------------------
+Numero de fallo: 9
+Pagina de fallo: 21
+-------------------------
+Numero de fallo: 10
+Pagina de fallo: 9
+-------------------------
+Numero de fallo: 11
+Pagina de fallo: 34
+-------------------------
+Numero de fallo: 12
+Pagina de fallo: 22
+-------------------------
+Numero de fallo: 13
+Pagina de fallo: 10
+-------------------------
+Numero de fallo: 14
+Pagina de fallo: 35
+-------------------------
+Numero de fallo: 15
+Pagina de fallo: 23
+-------------------------
+Numero de fallo: 16
+Pagina de fallo: 11
+-------------------------
+Numero de fallo: 17
+Pagina de fallo: 36
+-------------------------
+Numero de fallo: 18
+Pagina de fallo: 24
+-------------------------
+Numero de fallo: 19
+Pagina de fallo: 12
+-------------------------
+Numero de fallo: 20
+Pagina de fallo: 37
+-------------------------
+Numero de fallo: 21
+Pagina de fallo: 25
+-------------------------
+Numero de fallo: 22
+Pagina de fallo: 13
+-------------------------
+Numero de fallo: 23
+Pagina de fallo: 38
+-------------------------
+Numero de fallo: 24
+Pagina de fallo: 26
+-------------------------
+Numero de fallo: 25
+Pagina de fallo: 14
+-------------------------
+Numero de fallo: 26
+Pagina de fallo: 39
+-------------------------
+Numero de fallo: 27
+Pagina de fallo: 27
+-------------------------
+Numero de fallo: 28
+Pagina de fallo: 15
+-------------------------
+Numero de fallo: 29
+Pagina de fallo: 40
+-------------------------
+Numero de fallo: 30
+Pagina de fallo: 28
+-------------------------
+Numero de fallo: 31
+Pagina de fallo: 16
+-------------------------
+Numero de fallo: 32
+Pagina de fallo: 41
+-------------------------
+
+Cleaning up...
