@@ -1,0 +1,632 @@
+Binary file ./interrupt.o matches
+Binary file ./mipssim.o matches
+Binary file ./thread.o matches
+Binary file ./threadtest.o matches
+Binary file ./filehdr.o matches
+Binary file ./machine.o matches
+./filehdr.h:// Copyright (c) 1992-1993 The Regents of the University of California.
+./filehdr.h:#define NumDirect 	((SectorSize - 2 * sizeof(int)) / sizeof(int))
+./filehdr.h:// the "i-node"), describing where on disk to find all of the data in the file.
+./filehdr.h:// When it is on disk, it is stored in a single sector -- this means
+./filehdr.h:    void Deallocate(BitMap *bitMap);  		// De-allocate this file's 
+./filesys.h://	do with "naming" -- creating, opening, and deleting files,
+./filesys.h://	The "STUB" version just re-defines the Nachos file system 
+./filesys.h://	stored as files in the Nachos file system -- this causes an interesting
+./filesys.h:// Copyright (c) 1992-1993 The Regents of the University of California.
+./filesys.h:	if (fileDescriptor == -1) return FALSE;
+./filesys.h:	  if (fileDescriptor == -1) return NULL;
+./filesys.h:   OpenFile* directoryFile;		// "Root" directory -- list of 
+./filesys.cc:// Copyright (c) 1992-1993 The Regents of the University of California.
+./filesys.cc:// and the directory of files.  These file headers are placed in well-known 
+./filesys.cc:// sectors, so that they can be located on boot-up.
+./filesys.cc://----------------------------------------------------------------------
+./filesys.cc://	"format" -- should we initialize the disk?
+./filesys.cc://----------------------------------------------------------------------
+./filesys.cc:	freeMap->Mark(FreeMapSector);	    
+./filesys.cc:	freeMap->Mark(DirectorySector);
+./filesys.cc:	ASSERT(mapHdr->Allocate(freeMap, FreeMapFileSize));
+./filesys.cc:	ASSERT(dirHdr->Allocate(freeMap, DirectoryFileSize));
+./filesys.cc:	mapHdr->WriteBack(FreeMapSector);    
+./filesys.cc:	dirHdr->WriteBack(DirectorySector);
+./filesys.cc:	freeMap->WriteBack(freeMapFile);	 // flush changes to disk
+./filesys.cc:	directory->WriteBack(directoryFile);
+./filesys.cc:	    freeMap->Print();
+./filesys.cc:	    directory->Print();
+./filesys.cc://----------------------------------------------------------------------
+./filesys.cc://	"name" -- name of file to be created
+./filesys.cc://	"initialSize" -- size of file to be created
+./filesys.cc://----------------------------------------------------------------------
+./filesys.cc:    directory->FetchFrom(directoryFile);
+./filesys.cc:    if (directory->Find(name) != -1)
+./filesys.cc:        freeMap->FetchFrom(freeMapFile);
+./filesys.cc:        sector = freeMap->Find();	// find a sector to hold the file header
+./filesys.cc:    	if (sector == -1) 		
+./filesys.cc:        else if (!directory->Add(name, sector))
+./filesys.cc:	    if (!hdr->Allocate(freeMap, initialSize))
+./filesys.cc:    	    	hdr->WriteBack(sector); 		
+./filesys.cc:    	    	directory->WriteBack(directoryFile);
+./filesys.cc:    	    	freeMap->WriteBack(freeMapFile);
+./filesys.cc://----------------------------------------------------------------------
+./filesys.cc://	"name" -- the text name of the file to be opened
+./filesys.cc://----------------------------------------------------------------------
+./filesys.cc:    directory->FetchFrom(directoryFile);
+./filesys.cc:    sector = directory->Find(name); 
+./filesys.cc://----------------------------------------------------------------------
+./filesys.cc://	"name" -- the text name of the file to be removed
+./filesys.cc://----------------------------------------------------------------------
+./filesys.cc:    directory->FetchFrom(directoryFile);
+./filesys.cc:    sector = directory->Find(name);
+./filesys.cc:    if (sector == -1) {
+./filesys.cc:    fileHdr->FetchFrom(sector);
+./filesys.cc:    freeMap->FetchFrom(freeMapFile);
+./filesys.cc:    fileHdr->Deallocate(freeMap);  		// remove data blocks
+./filesys.cc:    freeMap->Clear(sector);			// remove header block
+./filesys.cc:    directory->Remove(name);
+./filesys.cc:    freeMap->WriteBack(freeMapFile);		// flush to disk
+./filesys.cc:    directory->WriteBack(directoryFile);        // flush to disk
+./filesys.cc://----------------------------------------------------------------------
+./filesys.cc://----------------------------------------------------------------------
+./filesys.cc:    directory->FetchFrom(directoryFile);
+./filesys.cc:    directory->List();
+./filesys.cc://----------------------------------------------------------------------
+./filesys.cc://----------------------------------------------------------------------
+./filesys.cc:    bitHdr->FetchFrom(FreeMapSector);
+./filesys.cc:    bitHdr->Print();
+./filesys.cc:    dirHdr->FetchFrom(DirectorySector);
+./filesys.cc:    dirHdr->Print();
+./filesys.cc:    freeMap->FetchFrom(freeMapFile);
+./filesys.cc:    freeMap->Print();
+./filesys.cc:    directory->FetchFrom(directoryFile);
+./filesys.cc:    directory->Print();
+Binary file ./progtest.o matches
+Binary file ./openfile.o matches
+./synchdisk.h:// Copyright (c) 1992-1993 The Regents of the University of California.
+./synchdisk.h:// As with other I/O devices, the raw physical disk is an asynchronous device --
+./synchdisk.h:    ~SynchDisk();			// De-allocate the synch disk data
+Binary file ./list.o matches
+Binary file ./system.o matches
+Binary file ./translate.o matches
+Binary file ./synchlist.o matches
+./openfile.h://	the UNIX ones -- type 'man open' to the UNIX prompt.
+./openfile.h://	by different threads -- this is part of the assignment.
+./openfile.h:// Copyright (c) 1992-1993 The Regents of the University of California.
+./openfile.h:					// start reading/writing -- UNIX lseek
+./openfile.h:					// than the UNIX idiom -- lseek to 
+Binary file ./nachos matches
+Binary file ./switch.o matches
+./synchdisk.cc:// Copyright (c) 1992-1993 The Regents of the University of California.
+./synchdisk.cc://----------------------------------------------------------------------
+./synchdisk.cc://----------------------------------------------------------------------
+./synchdisk.cc:    disk->RequestDone();
+./synchdisk.cc://----------------------------------------------------------------------
+./synchdisk.cc://	"name" -- UNIX file name to be used as storage for the disk data
+./synchdisk.cc://----------------------------------------------------------------------
+./synchdisk.cc://----------------------------------------------------------------------
+./synchdisk.cc:// 	De-allocate data structures needed for the synchronous disk
+./synchdisk.cc://----------------------------------------------------------------------
+./synchdisk.cc://----------------------------------------------------------------------
+./synchdisk.cc://	"sectorNumber" -- the disk sector to read
+./synchdisk.cc://	"data" -- the buffer to hold the contents of the disk sector
+./synchdisk.cc://----------------------------------------------------------------------
+./synchdisk.cc:    lock->Acquire();			// only one disk I/O at a time
+./synchdisk.cc:    disk->ReadRequest(sectorNumber, data);
+./synchdisk.cc:    semaphore->P();			// wait for interrupt
+./synchdisk.cc:    lock->Release();
+./synchdisk.cc://----------------------------------------------------------------------
+./synchdisk.cc://	"sectorNumber" -- the disk sector to be written
+./synchdisk.cc://	"data" -- the new contents of the disk sector
+./synchdisk.cc://----------------------------------------------------------------------
+./synchdisk.cc:    lock->Acquire();			// only one disk I/O at a time
+./synchdisk.cc:    disk->WriteRequest(sectorNumber, data);
+./synchdisk.cc:    semaphore->P();			// wait for interrupt
+./synchdisk.cc:    lock->Release();
+./synchdisk.cc://----------------------------------------------------------------------
+./synchdisk.cc://----------------------------------------------------------------------
+./synchdisk.cc:    semaphore->V();
+Binary file ./synch.o matches
+./Makefile:DEFINES =-DTHREADS -DUSER_PROGRAM -DVM -DFILESYS_NEEDED -DFILESYS
+./Makefile:INCPATH = -I../filesys -I../bin -I../vm -I../userprog -I../threads -I../machine
+./Makefile:# DEFINES =-DTHREADS -DFILESYS_NEEDED -DFILESYS
+./Makefile:# INCPATH = -I../filesys -I../threads -I../machine
+./Makefile:#-----------------------------------------------------------------
+./Makefile:# DO NOT DELETE THIS LINE -- make depend uses it
+./Makefile:main.o: ../threads/main.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:list.o: ../threads/list.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:scheduler.o: ../threads/scheduler.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:synch.o: ../threads/synch.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:synchlist.o: ../threads/synchlist.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:system.o: ../threads/system.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:thread.o: ../threads/thread.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:utility.o: ../threads/utility.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:threadtest.o: ../threads/threadtest.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:interrupt.o: ../machine/interrupt.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:sysdep.o: ../machine/sysdep.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sigset.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/signum.h /usr/include/time.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/siginfo.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sigaction.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sigcontext.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sigstack.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/ucontext.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/pthreadtypes.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sigthread.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/types.h /usr/include/endian.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/endian.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/byteswap.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/byteswap-16.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/select.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/select.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/time.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/sysmacros.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/time.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/socket.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/uio.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/uio.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/socket.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/socket_type.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sockaddr.h \
+./Makefile: /usr/include/i386-linux-gnu/asm/socket.h \
+./Makefile: /usr/include/asm-generic/socket.h \
+./Makefile: /usr/include/i386-linux-gnu/asm/sockios.h \
+./Makefile: /usr/include/asm-generic/sockios.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/file.h /usr/include/fcntl.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/fcntl.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/fcntl-linux.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stat.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/un.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/mman.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/mman.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/mman-linux.h /usr/include/unistd.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/posix_opt.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/environments.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/confname.h /usr/include/getopt.h \
+./Makefile:stats.o: ../machine/stats.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:timer.o: ../machine/timer.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:addrspace.o: ../userprog/addrspace.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:bitmap.o: ../userprog/bitmap.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:exception.o: ../userprog/exception.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:progtest.o: ../userprog/progtest.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:console.o: ../machine/console.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:machine.o: ../machine/machine.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:mipssim.o: ../machine/mipssim.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:translate.o: ../machine/translate.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:directory.o: ../filesys/directory.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:filehdr.o: ../filesys/filehdr.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:filesys.o: ../filesys/filesys.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:fstest.o: ../filesys/fstest.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:openfile.o: ../filesys/openfile.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:synchdisk.o: ../filesys/synchdisk.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+./Makefile:disk.o: ../machine/disk.cc /usr/include/stdc-predef.h \
+./Makefile: /usr/include/features.h /usr/include/i386-linux-gnu/sys/cdefs.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/wordsize.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs.h \
+./Makefile: /usr/include/i386-linux-gnu/gnu/stubs-32.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/types.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/typesizes.h /usr/include/libio.h \
+./Makefile: /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/stdio_lim.h \
+./Makefile: /usr/include/i386-linux-gnu/bits/sys_errlist.h /usr/include/string.h \
+Binary file ./bitmap.o matches
+Binary file ./utility.o matches
+Binary file ./scheduler.o matches
+Binary file ./exception.o matches
+./filehdr.cc://	would be called the i-node).
+./filehdr.cc://	table of pointers -- each entry in the table points to the 
+./filehdr.cc://	   for a new file, by modifying the in-memory data structure
+./filehdr.cc:// Copyright (c) 1992-1993 The Regents of the University of California.
+./filehdr.cc://----------------------------------------------------------------------
+./filehdr.cc://----------------------------------------------------------------------
+./filehdr.cc:    if (freeMap->NumClear() < numSectors)
+./filehdr.cc:	dataSectors[i] = freeMap->Find();
+./filehdr.cc://----------------------------------------------------------------------
+./filehdr.cc:// 	De-allocate all the space allocated for data blocks for this file.
+./filehdr.cc://----------------------------------------------------------------------
+./filehdr.cc:	ASSERT(freeMap->Test((int) dataSectors[i]));  // ought to be marked!
+./filehdr.cc:	freeMap->Clear((int) dataSectors[i]);
+./filehdr.cc://----------------------------------------------------------------------
+./filehdr.cc://----------------------------------------------------------------------
+./filehdr.cc:    synchDisk->ReadSector(sector, (char *)this);
+./filehdr.cc://----------------------------------------------------------------------
+./filehdr.cc://----------------------------------------------------------------------
+./filehdr.cc:    synchDisk->WriteSector(sector, (char *)this); 
+./filehdr.cc://----------------------------------------------------------------------
+./filehdr.cc://----------------------------------------------------------------------
+./filehdr.cc://----------------------------------------------------------------------
+./filehdr.cc://----------------------------------------------------------------------
+./filehdr.cc://----------------------------------------------------------------------
+./filehdr.cc://----------------------------------------------------------------------
+./filehdr.cc:	synchDisk->ReadSector(dataSectors[i], data);
+Binary file ./timer.o matches
+Binary file ./disk.o matches
+Binary file ./sysdep.o matches
+Binary file ./main.o matches
+Binary file ./console.o matches
+Binary file ./fstest.o matches
+./fstest.cc://	   Copy -- copy a file from UNIX to Nachos
+./fstest.cc://	   Print -- cat the contents of a Nachos file 
+./fstest.cc://	   Perftest -- a stress test for the Nachos file system
+./fstest.cc:// Copyright (c) 1992-1993 The Regents of the University of California.
+./fstest.cc://----------------------------------------------------------------------
+./fstest.cc://----------------------------------------------------------------------
+./fstest.cc:    if (!fileSystem->Create(to, fileLength)) {	 // Create Nachos file
+./fstest.cc:    openFile = fileSystem->Open(to);
+./fstest.cc:	openFile->Write(buffer, amountRead);	
+./fstest.cc://----------------------------------------------------------------------
+./fstest.cc://----------------------------------------------------------------------
+./fstest.cc:    if ((openFile = fileSystem->Open(name)) == NULL) {
+./fstest.cc:    while ((amountRead = openFile->Read(buffer, TransferSize)) > 0)
+./fstest.cc://----------------------------------------------------------------------
+./fstest.cc://	  FileWrite -- write the file
+./fstest.cc://	  FileRead -- read the file
+./fstest.cc://	  PerformanceTest -- overall control, and print out performance #'s
+./fstest.cc://----------------------------------------------------------------------
+./fstest.cc:    if (!fileSystem->Create(FileName, 0)) {
+./fstest.cc:    openFile = fileSystem->Open(FileName);
+./fstest.cc:        numBytes = openFile->Write(Contents, ContentSize);
+./fstest.cc:    if ((openFile = fileSystem->Open(FileName)) == NULL) {
+./fstest.cc:        numBytes = openFile->Read(buffer, ContentSize);
+./fstest.cc:    stats->Print();
+./fstest.cc:    if (!fileSystem->Remove(FileName)) {
+./fstest.cc:    stats->Print();
+./openfile.cc:// Copyright (c) 1992-1993 The Regents of the University of California.
+./openfile.cc://----------------------------------------------------------------------
+./openfile.cc://	"sector" -- the location on disk of the file header for this file
+./openfile.cc://----------------------------------------------------------------------
+./openfile.cc:    hdr->FetchFrom(sector);
+./openfile.cc://----------------------------------------------------------------------
+./openfile.cc:// 	Close a Nachos file, de-allocating any in-memory data structures.
+./openfile.cc://----------------------------------------------------------------------
+./openfile.cc://----------------------------------------------------------------------
+./openfile.cc:// 	Change the current location within the open file -- the point at
+./openfile.cc://	"position" -- the location within the file for the next Read/Write
+./openfile.cc://----------------------------------------------------------------------
+./openfile.cc://----------------------------------------------------------------------
+./openfile.cc://	"into" -- the buffer to contain the data to be read from disk 
+./openfile.cc://	"from" -- the buffer containing the data to be written to disk 
+./openfile.cc://	"numBytes" -- the number of bytes to transfer
+./openfile.cc://----------------------------------------------------------------------
+./openfile.cc://----------------------------------------------------------------------
+./openfile.cc://	"into" -- the buffer to contain the data to be read from disk 
+./openfile.cc://	"from" -- the buffer containing the data to be written to disk 
+./openfile.cc://	"numBytes" -- the number of bytes to transfer
+./openfile.cc://	"position" -- the offset within the file of the first byte to be
+./openfile.cc://----------------------------------------------------------------------
+./openfile.cc:    int fileLength = hdr->FileLength();
+./openfile.cc:	numBytes = fileLength - position;
+./openfile.cc:    lastSector = divRoundDown(position + numBytes - 1, SectorSize);
+./openfile.cc:    numSectors = 1 + lastSector - firstSector;
+./openfile.cc:        synchDisk->ReadSector(hdr->ByteToSector(i * SectorSize), 
+./openfile.cc:					&buf[(i - firstSector) * SectorSize]);
+./openfile.cc:    bcopy(&buf[position - (firstSector * SectorSize)], into, numBytes);
+./openfile.cc:    int fileLength = hdr->FileLength();
+./openfile.cc:	numBytes = fileLength - position;
+./openfile.cc:    lastSector = divRoundDown(position + numBytes - 1, SectorSize);
+./openfile.cc:    numSectors = 1 + lastSector - firstSector;
+./openfile.cc:        ReadAt(&buf[(lastSector - firstSector) * SectorSize], 
+./openfile.cc:    bcopy(from, &buf[position - (firstSector * SectorSize)], numBytes);
+./openfile.cc:        synchDisk->WriteSector(hdr->ByteToSector(i * SectorSize), 
+./openfile.cc:					&buf[(i - firstSector) * SectorSize]);
+./openfile.cc://----------------------------------------------------------------------
+./openfile.cc://----------------------------------------------------------------------
+./openfile.cc:    return hdr->FileLength(); 
+Binary file ./stats.o matches
+./directory.h://	Data structures to manage a UNIX-like directory of file names.
+./directory.h:// Copyright (c) 1992-1993 The Regents of the University of California.
+./directory.h:// The following class defines a UNIX-like "directory".  Each entry in
+./directory.h:    ~Directory();			// De-allocate the directory
+./directory.h:					//  of the directory -- all the file
+Binary file ./directory.o matches
+./directory.cc:// Copyright (c) 1992-1993 The Regents of the University of California.
+./directory.cc://----------------------------------------------------------------------
+./directory.cc://----------------------------------------------------------------------
+./directory.cc://----------------------------------------------------------------------
+./directory.cc:// 	De-allocate directory data structure.
+./directory.cc://----------------------------------------------------------------------
+./directory.cc://----------------------------------------------------------------------
+./directory.cc://	"file" -- file containing the directory contents
+./directory.cc://----------------------------------------------------------------------
+./directory.cc:    (void) file->ReadAt((char *)table, tableSize * sizeof(DirectoryEntry), 0);
+./directory.cc://----------------------------------------------------------------------
+./directory.cc://	"file" -- file to contain the new directory contents
+./directory.cc://----------------------------------------------------------------------
+./directory.cc:    (void) file->WriteAt((char *)table, tableSize * sizeof(DirectoryEntry), 0);
+./directory.cc://----------------------------------------------------------------------
+./directory.cc://	directory entries.  Return -1 if the name isn't in the directory.
+./directory.cc://	"name" -- the file name to look up
+./directory.cc://----------------------------------------------------------------------
+./directory.cc:    return -1;		// name not in directory
+./directory.cc://----------------------------------------------------------------------
+./directory.cc://	where the file's header is stored. Return -1 if the name isn't 
+./directory.cc://	"name" -- the file name to look up
+./directory.cc://----------------------------------------------------------------------
+./directory.cc:    if (i != -1)
+./directory.cc:    return -1;
+./directory.cc://----------------------------------------------------------------------
+./directory.cc://	"name" -- the name of the file being added
+./directory.cc://	"newSector" -- the disk sector containing the added file's header
+./directory.cc://----------------------------------------------------------------------
+./directory.cc:    if (FindIndex(name) != -1)
+./directory.cc://----------------------------------------------------------------------
+./directory.cc://	"name" -- the file name to be removed
+./directory.cc://----------------------------------------------------------------------
+./directory.cc:    if (i == -1)
+./directory.cc://----------------------------------------------------------------------
+./directory.cc://----------------------------------------------------------------------
+./directory.cc://----------------------------------------------------------------------
+./directory.cc://----------------------------------------------------------------------
+./directory.cc:	    hdr->FetchFrom(table[i].sector);
+./directory.cc:	    hdr->Print();
+Binary file ./synchdisk.o matches
+Binary file ./filesys.o matches
+Binary file ./addrspace.o matches
