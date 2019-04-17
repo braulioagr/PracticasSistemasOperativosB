@@ -1,4 +1,4 @@
-# PracticasSistemasOperativosB
+# Practicas Sistemas Operativos B
 
 ## Descripción
 En este Repositorio se respaldaran las practicas de la materia de Sistemas Operativos B
