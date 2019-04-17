@@ -1,0 +1,18 @@
+--------------------------------------------------
+Algoritmo de Reemplazon FIFO
+Tamaño de proceso: 1408
+Numero de paginas: 11
+--------------------------------------------------
+Cadena de referencia
+0 ,0 ,Si llegue 1
+1 ,1 ,Si llegue 2
+Si llegue 2
+1 ,10 ,1 ,10 ,1 ,10 ,1 ,1 ,1 ,0 ,0 ,Machine halting!
+
+Ticks: total 23, idle 0, system 10, user 13
+Disk I/O: reads 3, writes 0
+Console I/O: reads 0, writes 0
+Paging: faults 3
+Network I/O: packets received 0, sent 0
+
+Cleaning up...

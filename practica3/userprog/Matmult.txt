@@ -1,0 +1,344 @@
+--------------------------------------------------
+Algoritmo de Reemplazon FIFO
+Tamaño de proceso: 6912
+Numero de paginas: 54
+--------------------------------------------------
+Numero de fallo: 0
+Pagina de fallo: 0
+-------------------------
+Numero de fallo: 1
+Pagina de fallo: 1
+-------------------------
+Numero de fallo: 2
+Pagina de fallo: 53
+-------------------------
+Numero de fallo: 3
+Pagina de fallo: 2
+-------------------------
+Numero de fallo: 4
+Pagina de fallo: 8
+-------------------------
+Numero de fallo: 5
+Pagina de fallo: 3
+-------------------------
+Numero de fallo: 6
+Pagina de fallo: 20
+-------------------------
+Numero de fallo: 7
+Pagina de fallo: 33
+-------------------------
+Numero de fallo: 8
+Pagina de fallo: 4
+-------------------------
+Numero de fallo: 9
+Pagina de fallo: 21
+-------------------------
+Numero de fallo: 10
+Pagina de fallo: 9
+-------------------------
+Numero de fallo: 11
+Pagina de fallo: 34
+-------------------------
+Numero de fallo: 12
+Pagina de fallo: 22
+-------------------------
+Numero de fallo: 13
+Pagina de fallo: 10
+-------------------------
+Numero de fallo: 14
+Pagina de fallo: 35
+-------------------------
+Numero de fallo: 15
+Pagina de fallo: 23
+-------------------------
+Numero de fallo: 16
+Pagina de fallo: 11
+-------------------------
+Numero de fallo: 17
+Pagina de fallo: 36
+-------------------------
+Numero de fallo: 18
+Pagina de fallo: 24
+-------------------------
+Numero de fallo: 19
+Pagina de fallo: 12
+-------------------------
+Numero de fallo: 20
+Pagina de fallo: 37
+-------------------------
+Numero de fallo: 21
+Pagina de fallo: 25
+-------------------------
+Numero de fallo: 22
+Pagina de fallo: 13
+-------------------------
+Numero de fallo: 23
+Pagina de fallo: 38
+-------------------------
+Numero de fallo: 24
+Pagina de fallo: 26
+-------------------------
+Numero de fallo: 25
+Pagina de fallo: 14
+-------------------------
+Numero de fallo: 26
+Pagina de fallo: 39
+-------------------------
+Numero de fallo: 27
+Pagina de fallo: 27
+-------------------------
+Numero de fallo: 28
+Pagina de fallo: 15
+-------------------------
+Numero de fallo: 29
+Pagina de fallo: 40
+-------------------------
+Numero de fallo: 30
+Pagina de fallo: 28
+-------------------------
+Numero de fallo: 31
+Pagina de fallo: 16
+-------------------------
+Numero de fallo: 32
+Pagina de fallo: 41
+-------------------------
+Numero de fallo: 33
+Pagina de fallo: 29
+-------------------------
+Numero de fallo: 34
+Pagina de fallo: 1
+-------------------------
+Numero de fallo: 35
+Pagina de fallo: 53
+-------------------------
+Numero de fallo: 36
+Pagina de fallo: 2
+-------------------------
+Numero de fallo: 37
+Pagina de fallo: 17
+-------------------------
+Numero de fallo: 38
+Pagina de fallo: 3
+-------------------------
+Numero de fallo: 39
+Pagina de fallo: 42
+-------------------------
+Numero de fallo: 40
+Pagina de fallo: 30
+-------------------------
+Numero de fallo: 41
+Pagina de fallo: 4
+-------------------------
+Numero de fallo: 42
+Pagina de fallo: 18
+-------------------------
+Numero de fallo: 43
+Pagina de fallo: 43
+-------------------------
+Numero de fallo: 44
+Pagina de fallo: 31
+-------------------------
+Numero de fallo: 45
+Pagina de fallo: 19
+-------------------------
+Numero de fallo: 46
+Pagina de fallo: 44
+-------------------------
+Numero de fallo: 47
+Pagina de fallo: 32
+-------------------------
+Numero de fallo: 48
+Pagina de fallo: 20
+-------------------------
+Numero de fallo: 49
+Pagina de fallo: 45
+-------------------------
+Numero de fallo: 50
+Pagina de fallo: 33
+-------------------------
+Numero de fallo: 51
+Pagina de fallo: 5
+-------------------------
+Numero de fallo: 52
+Pagina de fallo: 6
+-------------------------
+Numero de fallo: 53
+Pagina de fallo: 8
+-------------------------
+Numero de fallo: 54
+Pagina de fallo: 7
+-------------------------
+Numero de fallo: 55
+Pagina de fallo: 21
+-------------------------
+Numero de fallo: 56
+Pagina de fallo: 22
+-------------------------
+Numero de fallo: 57
+Pagina de fallo: 23
+-------------------------
+Numero de fallo: 58
+Pagina de fallo: 24
+-------------------------
+Numero de fallo: 59
+Pagina de fallo: 25
+-------------------------
+Numero de fallo: 60
+Pagina de fallo: 26
+-------------------------
+Numero de fallo: 61
+Pagina de fallo: 27
+-------------------------
+Numero de fallo: 62
+Pagina de fallo: 9
+-------------------------
+Numero de fallo: 63
+Pagina de fallo: 28
+-------------------------
+Numero de fallo: 64
+Pagina de fallo: 34
+-------------------------
+Numero de fallo: 65
+Pagina de fallo: 10
+-------------------------
+Numero de fallo: 66
+Pagina de fallo: 35
+-------------------------
+Numero de fallo: 67
+Pagina de fallo: 29
+-------------------------
+Numero de fallo: 68
+Pagina de fallo: 53
+-------------------------
+Numero de fallo: 69
+Pagina de fallo: 11
+-------------------------
+Numero de fallo: 70
+Pagina de fallo: 36
+-------------------------
+Numero de fallo: 71
+Pagina de fallo: 12
+-------------------------
+Numero de fallo: 72
+Pagina de fallo: 37
+-------------------------
+Numero de fallo: 73
+Pagina de fallo: 30
+-------------------------
+Numero de fallo: 74
+Pagina de fallo: 4
+-------------------------
+Numero de fallo: 75
+Pagina de fallo: 13
+-------------------------
+Numero de fallo: 76
+Pagina de fallo: 38
+-------------------------
+Numero de fallo: 77
+Pagina de fallo: 31
+-------------------------
+Numero de fallo: 78
+Pagina de fallo: 14
+-------------------------
+Numero de fallo: 79
+Pagina de fallo: 39
+-------------------------
+Numero de fallo: 80
+Pagina de fallo: 32
+-------------------------
+Numero de fallo: 81
+Pagina de fallo: 20
+-------------------------
+Numero de fallo: 82
+Pagina de fallo: 15
+-------------------------
+Numero de fallo: 83
+Pagina de fallo: 40
+-------------------------
+Numero de fallo: 84
+Pagina de fallo: 5
+-------------------------
+Numero de fallo: 85
+Pagina de fallo: 6
+-------------------------
+Numero de fallo: 86
+Pagina de fallo: 33
+-------------------------
+Numero de fallo: 87
+Pagina de fallo: 7
+-------------------------
+Numero de fallo: 88
+Pagina de fallo: 21
+-------------------------
+Numero de fallo: 89
+Pagina de fallo: 22
+-------------------------
+Numero de fallo: 90
+Pagina de fallo: 23
+-------------------------
+Numero de fallo: 91
+Pagina de fallo: 24
+-------------------------
+Numero de fallo: 92
+Pagina de fallo: 25
+-------------------------
+Numero de fallo: 93
+Pagina de fallo: 26
+-------------------------
+Numero de fallo: 94
+Pagina de fallo: 27
+-------------------------
+Numero de fallo: 95
+Pagina de fallo: 16
+-------------------------
+Numero de fallo: 96
+Pagina de fallo: 28
+-------------------------
+Numero de fallo: 97
+Pagina de fallo: 41
+-------------------------
+Numero de fallo: 98
+Pagina de fallo: 17
+-------------------------
+Numero de fallo: 99
+Pagina de fallo: 42
+-------------------------
+Numero de fallo: 100
+Pagina de fallo: 29
+-------------------------
+Numero de fallo: 101
+Pagina de fallo: 53
+-------------------------
+Numero de fallo: 102
+Pagina de fallo: 18
+-------------------------
+Numero de fallo: 103
+Pagina de fallo: 43
+-------------------------
+Numero de fallo: 104
+Pagina de fallo: 19
+-------------------------
+Numero de fallo: 105
+Pagina de fallo: 44
+-------------------------
+Numero de fallo: 106
+Pagina de fallo: 30
+-------------------------
+Numero de fallo: 107
+Pagina de fallo: 4
+-------------------------
+Numero de fallo: 108
+Pagina de fallo: 45
+-------------------------
+Numero de fallo: 109
+Pagina de fallo: 0
+-------------------------
+Machine halting!
+
+Ticks: total 632507, idle 0, system 10, user 632497
+Disk I/O: reads 110, writes 65
+Console I/O: reads 0, writes 0
+Paging: faults 110
+Network I/O: packets received 0, sent 0
+
+Cleaning up...
