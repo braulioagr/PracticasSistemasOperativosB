@@ -1,0 +1,4 @@
+1. Directorio de 1 nivel, el directorio de un nivel se encuentra en el archivo del disco curo
+4. ... ?
+7. Asignación indexada, utiliza la estructura de inodos sencillos
+10. Rutinas de acceso para los sitemas de archivos de UNIX y de nachos, copiar archivo de unix a nachos, imprime archivo de nachos, y hace una prueba de rendimiento
